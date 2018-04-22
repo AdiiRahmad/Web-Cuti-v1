@@ -7,6 +7,7 @@ package controller.insert;
 
 import dao.CutiDAO;
 import dao.DetailCutiDAO;
+import dao.KaryawanDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -42,6 +43,8 @@ public class DetailCutiAutoID extends HttpServlet {
         
         try (PrintWriter out = response.getWriter()) {
 
+            session.setAttribute("KaryawanList", new KaryawanDAO().getAll());
+            session.setAttribute("CutiList", new CutiDAO().getAll());
             session.setAttribute("autoID", dcdao.getAutoID());
             dis = request.getRequestDispatcher("view/insert/detailcuti.jsp");
             dis.include(request, response);

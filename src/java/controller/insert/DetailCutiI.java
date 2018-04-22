@@ -71,7 +71,7 @@ public class DetailCutiI extends HttpServlet {
         }
 
         String lamacuti = request.getParameter("txtLamaCuti");
-        String pesan = "Gagal Merubah Data";
+        String pesan = "Gagal Menambah Data";
 
         try (PrintWriter out = response.getWriter()) {
             DetailCuti dc = new DetailCuti();
@@ -103,7 +103,7 @@ public class DetailCutiI extends HttpServlet {
             session.setAttribute("KaryawanList", new KaryawanDAO().getAll());
             session.setAttribute("CutiList", new CutiDAO().getAll());
             session.setAttribute("pesan", pesan);
-            out.println(pesan);
+//            dispatcher = request.getRequestDispatcher("view/insert/detailcuti.jsp");
             dispatcher = request.getRequestDispatcher("detailCutiController");
             dispatcher.include(request, response);
 

@@ -5,14 +5,9 @@
  */
 package tools;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import dao.KaryawanDAO;
-import entities.Karyawan;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import dao.CutiDAO;
+import dao.DetailCutiDAO;
+import entities.Cuti;
 import java.util.List;
 
 /**
@@ -20,15 +15,17 @@ import java.util.List;
  * @author Siti Khusnul Azifah
  */
 public class Test {
+
     public static void main(String[] args) {
-             List<Object> data = new KaryawanDAO()
+//             List<Object> data = new KaryawanDAO()
+        List<Object> data = new CutiDAO()
                 .getAll();
-    
-         for (Object object : data) {
-            Karyawan emp = (Karyawan) object;
-            System.out.println(emp.getNik()
+
+        data.stream().map((object) -> (Cuti) object).forEachOrdered((emp) -> {
+            System.out.println(emp.getJenisCuti()
             );
-        }
+        });
+
+        System.out.println(new DetailCutiDAO().getAutoID());
     }
 }
-

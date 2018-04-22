@@ -42,13 +42,13 @@ Contributor(s):
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
-    <property name="hibernate.enable_lazy_load_no_trans">true</property>
-    <property name="current_session_context_class">thread</property>
-    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
     <property name="hibernate.connection.username">system</property>
     <property name="hibernate.connection.password">admin</property>
     <property name="hibernate.default_schema">hr</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
     <mapping class="entities.Cuti"/>
     <mapping class="entities.DetailCuti"/>
     <mapping class="entities.DetailKaryawan"/>

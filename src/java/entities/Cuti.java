@@ -43,6 +43,7 @@ public class Cuti implements Serializable {
     private String jenisCuti;
     @Column(name = "DURASI")
     private Integer durasi;
+//    @Column(name = "KETERANGAN_CUTI")
     @Column(name = "KETERANGAN")
     private String keterangan;
     @OneToMany(mappedBy = "idCuti", fetch = FetchType.LAZY)
@@ -110,10 +111,7 @@ public class Cuti implements Serializable {
             return false;
         }
         Cuti other = (Cuti) object;
-        if ((this.idCuti == null && other.idCuti != null) || (this.idCuti != null && !this.idCuti.equals(other.idCuti))) {
-            return false;
-        }
-        return true;
+        return !((this.idCuti == null && other.idCuti != null) || (this.idCuti != null && !this.idCuti.equals(other.idCuti)));
     }
 
     @Override

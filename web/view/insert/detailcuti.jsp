@@ -34,10 +34,6 @@
     <div class="col-sm-12 col-sm-offset-4">
         <%
             String autoid = (String) session.getAttribute("autoID");
-
-            Object datas = session.getAttribute("detailCutiU");
-            DetailCuti dc = (DetailCuti) datas;
-
             List<Object> datas1 = (List<Object>) session.
                     getAttribute("KaryawanList");
 
@@ -51,7 +47,7 @@
                     <% if (autoid.equals("D")) {
                     %><input type="text" class="form-control" id="idDetailCuti" name="txtIDDetailCuti" value="<%= autoid%>001" placeholder="ID Detail Cuti" readonly="true" /><%
                 } else {%>
-                    <input type="text" class="form-control" id="idDetailCuti" name="txtIDDetailCuti" value="<%= autoid%>" placeholder="ID Detail Cuti" readonly="true" />">
+                    <input type="text" class="form-control" id="idDetailCuti" name="txtIDDetailCuti" value="<%= autoid%>" placeholder="ID Detail Cuti" readonly="true" />
                     <%}%>
 
                 </div>
@@ -60,13 +56,9 @@
                     <select name="txtNik"  class="form-control">
                         <% for (Object data : datas1) {
                                 Karyawan k = (Karyawan) data;
-                                if (dc.getNik().getNik().equals(k.getNik())) {
                         %>
-                        <option value="<%= k.getNik()%>" selected><%=k.getNik() + " - " + k.getNama()%></option> 
-                        <%      } else {%>
                         <option value="<%= k.getNik()%>"><%=k.getNik() + " - " + k.getNama()%></option> 
-                        <%      }
-                            }
+                        <%}
                         %>
                     </select>
                 </div>
@@ -75,13 +67,9 @@
                     <select name="txtJenisCuti"  class="form-control">
                         <% for (Object data : datas2) {
                                 Cuti cu = (Cuti) data;
-                                if (cu.getIdCuti().equals(dc.getIdCuti().getIdCuti())) {
                         %>
-                        <option value="<%= cu.getIdCuti()%>" selected><%=cu.getIdCuti() + " - " + cu.getJenisCuti()%></option> 
-                        <%      } else {%>
                         <option value="<%= cu.getIdCuti()%>"><%=cu.getIdCuti() + " - " + cu.getJenisCuti()%></option> 
-                        <%      }
-                            }
+                        <%}
                         %>
                     </select>
                 </div>

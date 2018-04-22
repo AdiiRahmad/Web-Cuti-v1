@@ -62,6 +62,7 @@ public class Karyawan implements Serializable {
     @Column(name = "TGL_MULAI_KERJA")
     @Temporal(TemporalType.TIMESTAMP)
     private Date tglMulaiKerja;
+//    @Column(name = "SISA_CUTI")
     @Column(name = "SISA")
     private Short sisa;
     @OneToMany(mappedBy = "nik", fetch = FetchType.LAZY)

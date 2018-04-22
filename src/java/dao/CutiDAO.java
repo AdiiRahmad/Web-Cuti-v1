@@ -44,7 +44,7 @@ public class CutiDAO implements InterfaceCutiDAO {
         return fdao.delete(Cuti.class,object.toString());
     }
 
-
+    @Override
     public List<Object> getAll() {
         return fdao.getAll("From Cuti");
     }

@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Siti Khusnul Azifah
  */
 @Entity
+//@Table(name = "JABATANS")
 @Table(name = "JABATAN")
 @XmlRootElement
 @NamedQueries({

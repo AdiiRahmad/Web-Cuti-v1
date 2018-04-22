@@ -18,21 +18,13 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import dao.DetailCutiDAO;
-import dao.JabatanDAO;
-import dao.SetujuCutiDAO;
 import entities.Cuti;
 import entities.DetailCuti;
 import entities.Jabatan;
 import entities.Karyawan;
 import entities.SetujuCuti;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -115,12 +107,12 @@ public class ControllerPrintAll extends HttpServlet {
                         SetujuCuti sc = (SetujuCuti) data;
                         DetailCuti iddetailcuti = new DetailCuti(sc.getIdDetailCuti().toString());
                         Karyawan nik = new Karyawan(sc.getIdDetailCuti().getNik().toString());
-                        Karyawan nama = new Karyawan(sc.getIdDetailCuti().getNik().getNama().toString());
-                        Cuti jenis = new Cuti(sc.getIdDetailCuti().getIdCuti().getJenisCuti().toString());
+                        Karyawan nama = new Karyawan(sc.getIdDetailCuti().getNik().getNama());
+                        Cuti jenis = new Cuti(sc.getIdDetailCuti().getIdCuti().getJenisCuti());
                         DetailCuti tanggalmulai = new DetailCuti(sc.getIdDetailCuti().getTanggalMulai().toString());
                         DetailCuti tanggalselesai = new DetailCuti(sc.getIdDetailCuti().getTanggalSelesai().toString());
                         DetailCuti lamacuti = new DetailCuti(sc.getIdDetailCuti().getLamaCuti().toString());
-                        Jabatan jabatan = new Jabatan(sc.getIdJabatan().getJabatan().toString());
+                        Jabatan jabatan = new Jabatan(sc.getIdJabatan().getJabatan());
                         
                         PdfPCell cel01 = new PdfPCell(new Paragraph(""+i+"", FontFactory.getFont("Arial", 7, Font.NORMAL, BaseColor.BLACK)));
                         PdfPCell cel11 = new PdfPCell(new Paragraph(iddetailcuti.toString(), FontFactory.getFont("Arial", 7, Font.NORMAL, BaseColor.BLACK)));
@@ -148,7 +140,7 @@ public class ControllerPrintAll extends HttpServlet {
 
                     document.add(tbl);
                     document.close();
-                } catch (Exception ex) {
+                } catch (DocumentException | IOException ex) {
                     ex.getMessage();
                 }
             } catch (Exception e) {

@@ -42,7 +42,7 @@ public class CutiController extends HttpServlet {
             List<Object> datas = new CutiDAO().getAll();
             session.setAttribute("dataCutis", datas);
             dispatcher = request.getRequestDispatcher("view/cuti.jsp");
-            dispatcher.forward(request, response);
+            dispatcher.include(request, response);
         }
     }
 

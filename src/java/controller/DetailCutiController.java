@@ -41,8 +41,10 @@ public class DetailCutiController extends HttpServlet {
         HttpSession session = request.getSession();
         try (PrintWriter out = response.getWriter()) {
             List<Object> datas = new DetailCutiDAO().getAll();
+            out.println(datas.size());
             session.setAttribute("dataDetailCutis", datas);
             dispatcher = request.getRequestDispatcher("view/detailcuti.jsp");
+            dispatcher.forward(request, response);
             dispatcher.forward(request, response);
         }
     }
